@@ -67,5 +67,5 @@ def checkout(cart, coupons)
   new_cart = apply_clearance(apply_coupons(cart, coupons))
   binding.pry
   total = new_cart.reduce(0){|sum, item| sum + item.values.first[:price]}
-  
+
 end
