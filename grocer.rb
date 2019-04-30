@@ -18,7 +18,7 @@ end
 def apply_coupons(cart, coupons)
   # binding.pry
   new_cart = {}
-  cart.each do |item|
+  cart.each do |item, details|
     binding.pry
     item_price = item.values.first[:price]
     item_count = item.values.first[:count]
