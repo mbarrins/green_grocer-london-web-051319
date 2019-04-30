@@ -27,17 +27,18 @@ def apply_coupons(cart, coupons)
     coupon_num = coupon[:num]
     coupon_cost = coupon[:cost]
     binding.pry
-    if not coupon.nil?
+    if coupon.nil?
+      new_cart << item
+    else
       if item_count % coupon_num == 0
         new_cart << {"#{coupon_item} W/COUPON" => {:price => coupon_cost, :clearance => item_clearance, :count => item_count}}
       elsif item_count > 0 && item_count % coupon_num > 0
         new_cart << {"#{coupon_item}" => {:price => item_price, :clearance => item_clearance, :count => item_count % coupon_num}}
         new_cart << {"#{coupon_item} W/COUPON" => {:price => coupon_cost, :clearance => item_clearance, :count => item_count - (item_count % coupon_num)}}
       end
-    else
-      new_cart << item
     end
   end
+  new_cart
 end
 
 puts apply_coupons(consolidate_cart(cart), coupons)
