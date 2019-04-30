@@ -26,12 +26,14 @@ def apply_coupons(cart, coupons)
     coupon_num = coupon[:num]
     coupon_cost = coupon[:cost]
 
-    if not item.nil?
+    if not coupon.nil?
       if item_count % coupon_num == 0
 
       elsif item_count > 0 && item_count % coupon_num > 0
 
       end
+    else
+      new_cart << item
     end
 
   end
