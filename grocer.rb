@@ -24,7 +24,7 @@ def apply_coupons(cart, coupons)
     if coupon.nil?
       new_cart[item] = details
     else
-      if item[:count] % coupon[:num] == 0
+      if details[:count] % coupon[:num] == 0
         new_cart["#{item} W/COUPON"] =
           {
             :price => coupon[:cost],
