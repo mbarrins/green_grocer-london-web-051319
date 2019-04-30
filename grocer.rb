@@ -20,9 +20,9 @@ def apply_coupons(cart, coupons)
     item = coupon[:item]
     num = coupon[:num]
     cost = coupon[:cost]
-    
+
     cart.select{|item| item.keys.first == coupon[:item]}
-    
+
   end
 end
 
