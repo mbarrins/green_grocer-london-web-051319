@@ -3,6 +3,7 @@ require "pry"
 cart = [
   {"AVOCADO" => {:price => 3.0, :clearance => true }},
   {"AVOCADO" => {:price => 3.0, :clearance => true }},
+  {"AVOCADO" => {:price => 3.0, :clearance => true }},
   {"KALE"    => {:price => 3.0, :clearance => false}}
 ]
 
