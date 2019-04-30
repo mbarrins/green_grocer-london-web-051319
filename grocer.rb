@@ -28,21 +28,21 @@ def apply_coupons(cart, coupons)
         new_cart["#{item} W/COUPON"] =
           {
             :price => coupon[:cost],
-            :clearance => item[:clearance],
-            :count => (item[:count] / coupon[:num])
+            :clearance => details[:clearance],
+            :count => (details[:count] / coupon[:num])
           }
-      elsif item[:count] > 0 && item[:count] % coupon[:num] > 0
+      elsif details[:count] > 0 && details[:count] % coupon[:num] > 0
         new_cart[item] =
           {
-            :price => item[:price],
-            :clearance => item[:clearance],
-            :count => item[:count] % coupon[:num]
+            :price => details[:price],
+            :clearance => details[:clearance],
+            :count => details[:count] % coupon[:num]
           }
         new_cart["#{item} W/COUPON"] =
           {
             :price => coupon[:cost],
-            :clearance => item[:clearance],
-            :count => (item[:count] - (item[:count] % coupon[:num]))/coupon[:num]
+            :clearance => details[:clearance],
+            :count => (details[:count] - (details[:count] % coupon[:num]))/coupon[:num]
           }
       end
     end
@@ -59,8 +59,8 @@ def apply_clearance(cart)
     # item_price = item[:price]
     # item_count = item[:count]
     # item_clearance = item[:clearance]
-    if item[:clearance]
-      new_cart[item] = {:price => (item[:price] * 0.80).round(2), :clearance => item[:clearance], :count => item[:count]}
+    if details[:clearance]
+      new_cart[item] = {:price => (details[:price] * 0.80).round(2), :clearance => details[:clearance], :count => details[:count]}
     else
       new_cart[item] = details
     end
@@ -76,7 +76,7 @@ def checkout(cart, coupons)
   new_cart = apply_clearance(new_cart)
   # new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   # binding.pry
-  total = new_cart.reduce(0){|sum, item| sum + item.values.first[:price]}
+  total = new_cart.reduce(0){|sum, (item, details)| sum + details[:price]}
   total > 100 ? (total * 0.9).round(2) : total
 end
 
