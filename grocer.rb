@@ -50,7 +50,7 @@ def apply_coupons(cart, coupons)
   new_cart
 end
 
-puts apply_coupons(consolidate_cart(cart), coupons).inspect
+# puts apply_coupons(consolidate_cart(cart), coupons).inspect
 
 def apply_clearance(cart)
   new_cart = {}
