@@ -21,7 +21,7 @@ def apply_coupons(cart, coupons)
     item_price = item.values.first[:price]
     item_count = item.values.first[:price]
 
-    coupon = cart.find{|item| item.keys.first == coupon[:item]}
+    coupon = coupons.find{|coupon| coupon[:item] == item.keys.first}
     coupon_item = coupon[:item]
     coupon_num = coupon[:num]
     coupon_cost = coupon[:cost]
