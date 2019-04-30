@@ -75,7 +75,7 @@ def apply_clearance(cart)
     #   new_cart[item] = details
     end
   end
-  new_cart
+  cart
 end
 
 puts apply_clearance(consolidate_cart(cart)).inspect
