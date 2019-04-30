@@ -60,6 +60,8 @@ def apply_clearance(cart)
   new_cart
 end
 
+puts apply_clearance(consolidate_cart(cart)).inspect
+
 def checkout(cart, coupons)
   # code here
 end
