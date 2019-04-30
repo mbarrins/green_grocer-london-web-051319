@@ -64,5 +64,8 @@ end
 puts apply_clearance(consolidate_cart(cart)).inspect
 
 def checkout(cart, coupons)
-  # code here
+  new_cart = apply_clearance(apply_coupons(cart, coupons))
+  binding.pry
+  total = new_cart.reduce(0){|sum, item| sum + item.values.first[:price]}
+  
 end
