@@ -16,11 +16,10 @@ end
 # puts consolidate_cart(cart).inspect
 
 def apply_coupons(cart, coupons)
-  # binding.pry
   new_cart = {}
   cart.each do |item, details|
     coupon = coupons.find{|coupon| coupon[:item] == item}
-    # binding.pry
+    
     if coupon.nil?
       new_cart[item] = details
     else
@@ -81,11 +80,10 @@ end
 puts apply_clearance(consolidate_cart(cart)).inspect
 
 def checkout(cart, coupons)
-  new_cart = consolidate_cart(cart)
-  new_cart = apply_coupons(new_cart, coupons)
-  new_cart = apply_clearance(new_cart)
-  # new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
-  # binding.pry
+  # new_cart = consolidate_cart(cart)
+  # new_cart = apply_coupons(new_cart, coupons)
+  # new_cart = apply_clearance(new_cart)
+  new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   total = new_cart.reduce(0){|sum, (item, details)| sum + (details[:count] * details[:price])}
   total > 100 ? (total * 0.9).round(2) : total
 end
