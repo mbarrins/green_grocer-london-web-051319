@@ -13,7 +13,7 @@ def consolidate_cart(cart)
   cart.uniq.map{|items| items.map{|item, detail| [item, detail.merge({:count => cart.count(items)})]}.to_h}
 end
 
-# puts consolidate_cart(cart).inspect
+puts consolidate_cart(cart).inspect
 
 def apply_coupons(cart, coupons)
   # binding.pry
