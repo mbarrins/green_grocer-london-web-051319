@@ -27,24 +27,24 @@ def apply_coupons(cart, coupons)
       new_cart[item] = details
     else
       if item[:count] % coupon[:num] == 0
-        new_cart << {"#{item} W/COUPON" =>
+        new_cart["#{item} W/COUPON"] =
           {
             :price => coupon[:cost],
             :clearance => item[:clearance],
-            :count => (item[:count] / coupon[:num])}
+            :count => (item[:count] / coupon[:num])
           }
       elsif item[:count] > 0 && item[:count] % coupon[:num] > 0
-        new_cart << {"#{item}" =>
+        new_cart[item] =
           {
             :price => item[:price],
             :clearance => item[:clearance],
-            :count => item[:count] % coupon[:num]}
+            :count => item[:count] % coupon[:num]
           }
-        new_cart << {"#{item} W/COUPON" =>
+        new_cart["#{item} W/COUPON"] =
           {
             :price => coupon[:cost],
             :clearance => item[:clearance],
-            :count => (item[:count] - (item[:count] % coupon[:num]))/coupon[:num]}
+            :count => (item[:count] - (item[:count] % coupon[:num]))/coupon[:num]
           }
       end
     end
