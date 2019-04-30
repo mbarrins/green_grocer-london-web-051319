@@ -10,7 +10,7 @@ cart = [
 coupons = [{:item => "AVOCADO", :num => 2, :cost => 5.0}]
 
 def consolidate_cart(cart)
-  cart.uniq.map{|items| items.map{|item, detail| [item, detail.merge({:count => cart.count(items)})]}.to_h}
+  cart.uniq.map{|items| items.map{|item, detail| [item, detail.merge({:count => cart.count(items)})]}.to_h}.to_h
 end
 
 puts consolidate_cart(cart).inspect
