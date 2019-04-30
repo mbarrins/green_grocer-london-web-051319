@@ -20,7 +20,7 @@ def apply_coupons(cart, coupons)
   new_cart = {}
   cart.each do |item, details|
     coupon = coupons.find{|coupon| coupon[:item] == item}
-    binding.pry
+    # binding.pry
     if coupon.nil?
       new_cart[item] = details
     else
