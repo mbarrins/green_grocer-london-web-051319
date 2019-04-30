@@ -17,11 +17,18 @@ puts consolidate_cart(cart)
 def apply_coupons(cart, coupons)
   binding.pry
   coupons.each do |coupon|
-    item = coupon[:item]
-    num = coupon[:num]
-    cost = coupon[:cost]
+    coupon_item = coupon[:item]
+    coupon_num = coupon[:num]
+    coupon_cost = coupon[:cost]
 
-    cart.select{|item| item.keys.first == coupon[:item]}
+    item = cart.find{|item| item.keys.first == coupon[:item]}
+    item_price = item.values.first[:price]
+    item_clearance = item.values.first[:price]
+    item_count = item.values.first[:price]
+
+    if not item.nil?
+
+    end
 
   end
 end
