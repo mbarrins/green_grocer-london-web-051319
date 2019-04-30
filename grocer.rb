@@ -1,7 +1,7 @@
 require "pry"
 
 def consolidate_cart(cart)
-  bin
+  binding.pry
   cart
 end
 
