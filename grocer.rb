@@ -69,3 +69,5 @@ def checkout(cart, coupons)
   total = new_cart.reduce(0){|sum, item| sum + item.values.first[:price]}
 
 end
+
+checkout(cart, coupons)
