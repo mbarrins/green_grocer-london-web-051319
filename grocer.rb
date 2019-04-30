@@ -19,10 +19,8 @@ def apply_coupons(cart, coupons)
   # binding.pry
   new_cart = {}
   cart.each do |item, details|
-    binding.pry
     coupon = coupons.find{|coupon| coupon[:item] == item}
 
-    # binding.pry
     if coupon.nil?
       new_cart[item] = details
     else
