@@ -69,6 +69,7 @@ def apply_clearance(cart)
   new_cart = {}
   cart.each do |item, details|
     if details[:clearance]
+      binding.pry
       new_cart[item] = {:price => (details[:price] * 0.80).round(2), :clearance => details[:clearance], :count => details[:count]}
     else
       new_cart[item] = details
@@ -80,9 +81,6 @@ end
 puts apply_clearance(consolidate_cart(cart)).inspect
 
 def checkout(cart, coupons)
-  # new_cart = consolidate_cart(cart)
-  # new_cart = apply_coupons(new_cart, coupons)
-  # new_cart = apply_clearance(new_cart)
   new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   total = new_cart.reduce(0){|sum, (item, details)| sum + (details[:count] * details[:price])}
   total > 100 ? (total * 0.9).round(2) : total
