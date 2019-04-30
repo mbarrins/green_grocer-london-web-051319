@@ -17,7 +17,7 @@ end
 
 def apply_coupons(cart, coupons)
   # binding.pry
-  new_cart = []
+  new_cart = {}
   cart.each do |item|
     item_price = item.values.first[:price]
     item_count = item.values.first[:count]
@@ -46,7 +46,7 @@ end
 # puts apply_coupons(consolidate_cart(cart), coupons).inspect
 
 def apply_clearance(cart)
-  new_cart = []
+  new_cart = {}
   cart.each do |item|
     item_name = item.keys.first
     item_price = item.values.first[:price]
