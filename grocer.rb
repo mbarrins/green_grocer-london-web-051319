@@ -56,6 +56,7 @@ def apply_clearance(cart)
       new_cart << {"#{item_name}" => {:price => (item_price * 0.80).round(2), :clearance => item_clearance, :count => item_count}}
     else
       new_cart << item
+    end
   end
   new_cart
 end
