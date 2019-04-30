@@ -15,7 +15,7 @@ end
 puts consolidate_cart(cart)
 
 def apply_coupons(cart, coupons)
-  binding.pry
+  # binding.pry
   new_cart = []
   cart.each do |item|
     item_price = item.values.first[:price]
@@ -26,7 +26,7 @@ def apply_coupons(cart, coupons)
     coupon_item = coupon[:item]
     coupon_num = coupon[:num]
     coupon_cost = coupon[:cost]
-
+    binding.pry
     if not coupon.nil?
       if item_count % coupon_num == 0
         new_cart << {"#{coupon_item} W/COUPON" => {:price => coupon_cost, :clearance => item_clearance, :count = item_count}
