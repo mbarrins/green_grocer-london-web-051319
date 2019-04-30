@@ -72,7 +72,7 @@ def checkout(cart, coupons)
   new_cart = apply_clearance(new_cart)
   # new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   binding.pry
-  total = new_cart.reduce(0){|sum, (item, details)| sum + details[:price]}
+  total = new_cart.reduce(0){|sum, (item, details)| sum + (details[:count] * details[:price])}
   total > 100 ? (total * 0.9).round(2) : total
 end
 
