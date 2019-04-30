@@ -65,7 +65,7 @@ puts apply_clearance(consolidate_cart(cart)).inspect
 
 def checkout(cart, coupons)
   new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
-  binding.pry
+  # binding.pry
   total = new_cart.reduce(0){|sum, item| sum + item.values.first[:price]}
   total > 100 ? (total * 0.9).round(2) : total
 end
