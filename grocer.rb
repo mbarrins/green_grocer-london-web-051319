@@ -13,7 +13,7 @@ def consolidate_cart(cart)
   cart.uniq.map{|items| items.map{|item, detail| [item, detail.merge({:count => cart.count(items)})]}.to_h}
 end
 
-puts consolidate_cart(cart).inspect
+# puts consolidate_cart(cart).inspect
 
 def apply_coupons(cart, coupons)
   # binding.pry
@@ -43,7 +43,7 @@ def apply_coupons(cart, coupons)
   new_cart
 end
 
-puts apply_coupons(consolidate_cart(cart), coupons).inspect
+# puts apply_coupons(consolidate_cart(cart), coupons).inspect
 
 def apply_clearance(cart)
   new_cart = []
@@ -61,7 +61,7 @@ def apply_clearance(cart)
   new_cart
 end
 
-puts apply_clearance(consolidate_cart(cart)).inspect
+# puts apply_clearance(consolidate_cart(cart)).inspect
 
 def checkout(cart, coupons)
   new_cart = consolidate_cart(cart)
@@ -73,4 +73,4 @@ def checkout(cart, coupons)
   total > 100 ? (total * 0.9).round(2) : total
 end
 
-puts checkout(cart, coupons)
+# puts checkout(cart, coupons)
