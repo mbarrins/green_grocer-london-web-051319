@@ -25,7 +25,7 @@ def apply_coupons(cart, coupons)
 
     coupon = coupons.find{|coupon| coupon[:item] == item.keys.first}
 
-    binding.pry
+    # binding.pry
     if coupon.nil?
       new_cart << item
     else
