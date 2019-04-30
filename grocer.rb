@@ -24,27 +24,41 @@ def apply_coupons(cart, coupons)
     if coupon.nil?
       new_cart[item] = details
     else
-      if details[:count] % coupon[:num] == 0
-        new_cart["#{item} W/COUPON"] =
-          {
-            :price => coupon[:cost],
-            :clearance => details[:clearance],
-            :count => (details[:count] / coupon[:num])
-          }
-      elsif details[:count] > 0 && details[:count] % coupon[:num] > 0
-        new_cart[item] =
+      new_cart[item] =
           {
             :price => details[:price],
             :clearance => details[:clearance],
             :count => details[:count] % coupon[:num]
           }
+
         new_cart["#{item} W/COUPON"] =
           {
             :price => coupon[:cost],
             :clearance => details[:clearance],
             :count => (details[:count] - (details[:count] % coupon[:num]))/coupon[:num]
           }
-      end
+          
+      # if details[:count] % coupon[:num] == 0
+      #   new_cart["#{item} W/COUPON"] =
+      #     {
+      #       :price => coupon[:cost],
+      #       :clearance => details[:clearance],
+      #       :count => (details[:count] / coupon[:num])
+      #     }
+      # elsif details[:count] > 0 && details[:count] % coupon[:num] > 0
+      #   new_cart[item] =
+      #     {
+      #       :price => details[:price],
+      #       :clearance => details[:clearance],
+      #       :count => details[:count] % coupon[:num]
+      #     }
+      #   new_cart["#{item} W/COUPON"] =
+      #     {
+      #       :price => coupon[:cost],
+      #       :clearance => details[:clearance],
+      #       :count => (details[:count] - (details[:count] % coupon[:num]))/coupon[:num]
+      #     }
+      # end
     end
   end
   new_cart
