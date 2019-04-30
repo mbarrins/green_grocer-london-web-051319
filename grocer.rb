@@ -69,7 +69,7 @@ def apply_clearance(cart)
   cart.each do |item, details|
     details[:price] = (details[:price] * 0.80).round(2) if details[:clearance]
   end
-  cart
+  # cart
 end
 
 puts apply_clearance(consolidate_cart(cart)).inspect
