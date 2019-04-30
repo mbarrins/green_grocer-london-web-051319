@@ -23,13 +23,14 @@ def apply_coupons(cart, coupons)
     item_clearance = item.values.first[:clearance]
 
     coupon = coupons.find{|coupon| coupon[:item] == item.keys.first}
-    coupon_item = coupon[:item]
-    coupon_num = coupon[:num]
-    coupon_cost = coupon[:cost]
+
     binding.pry
     if coupon.nil?
       new_cart << item
     else
+      coupon_item = coupon[:item]
+      coupon_num = coupon[:num]
+      coupon_cost = coupon[:cost]
       if item_count % coupon_num == 0
         new_cart << {"#{coupon_item} W/COUPON" => {:price => coupon_cost, :clearance => item_clearance, :count => item_count}}
       elsif item_count > 0 && item_count % coupon_num > 0
