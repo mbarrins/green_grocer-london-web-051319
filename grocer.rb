@@ -49,7 +49,7 @@ def apply_clearance(cart)
   end
 end
 
-puts apply_clearance(consolidate_cart(cart)).inspect
+# puts apply_clearance(consolidate_cart(cart)).inspect
 
 def checkout(cart, coupons)
   new_cart = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
