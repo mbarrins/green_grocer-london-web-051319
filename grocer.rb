@@ -19,6 +19,7 @@ def apply_coupons(cart, coupons)
   # binding.pry
   new_cart = {}
   cart.each do |item|
+    pry
     item_price = item.values.first[:price]
     item_count = item.values.first[:count]
     item_clearance = item.values.first[:clearance]
