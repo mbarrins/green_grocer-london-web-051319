@@ -55,10 +55,6 @@ puts apply_coupons(consolidate_cart(cart), coupons).inspect
 def apply_clearance(cart)
   new_cart = {}
   cart.each do |item, details|
-    # item_name = item
-    # item_price = item[:price]
-    # item_count = item[:count]
-    # item_clearance = item[:clearance]
     if details[:clearance]
       new_cart[item] = {:price => (details[:price] * 0.80).round(2), :clearance => details[:clearance], :count => details[:count]}
     else
