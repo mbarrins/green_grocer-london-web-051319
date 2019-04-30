@@ -68,7 +68,7 @@ def checkout(cart, coupons)
   binding.pry
   total = new_cart.reduce(0){|sum, item| sum + item.values.first[:price]}
 
-  total = (total * .9).round(2) if total > 100
+  total = (total * 0.9).round(2) if total > 100
 end
 
 puts checkout(cart, coupons)
