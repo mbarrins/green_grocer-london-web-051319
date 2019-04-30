@@ -20,17 +20,17 @@ def apply_coupons(cart, coupons)
   cart.each do |item|
     item_price = item.values.first[:price]
     item_count = item.values.first[:price]
-    
+
     coupon_item = coupon[:item]
     coupon_num = coupon[:num]
     coupon_cost = coupon[:cost]
 
     item = cart.find{|item| item.keys.first == coupon[:item]}
-    
+
 
     if not item.nil?
       if item_count % coupon_num == 0
-        
+
       elsif item_count > 0 && item_count % coupon_num > 0
 
       end
