@@ -9,7 +9,7 @@ cart = [
 
 def consolidate_cart(cart)
   binding.pry
-  cart
+  cart.map{|item| [item, item[item.keys].merge({:count => cart.count(item)})]}.to_h
 end
 
 puts consolidate_cart(cart)
