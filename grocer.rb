@@ -20,24 +20,25 @@ def apply_coupons(cart, coupons)
   new_cart = {}
   cart.each do |item, details|
     binding.pry
-    item_price = item.values.first[:price]
-    item_count = item.values.first[:count]
-    item_clearance = item.values.first[:clearance]
-
-    coupon = coupons.find{|coupon| coupon[:item] == item.keys.first}
+    coupon = coupons.find{|coupon| coupon[:item] == item}
 
     # binding.pry
     if coupon.nil?
-      new_cart << item
+      new_cart[item] = details 
     else
-      coupon_item = coupon[:item]
-      coupon_num = coupon[:num]
-      coupon_cost = coupon[:cost]
-      if item_count % coupon_num == 0
-        new_cart << {"#{coupon_item} W/COUPON" => {:price => coupon_cost, :clearance => item_clearance, :count => (item_count / coupon_num)}}
-      elsif item_count > 0 && item_count % coupon_num > 0
-        new_cart << {"#{coupon_item}" => {:price => item_price, :clearance => item_clearance, :count => item_count % coupon_num}}
-        new_cart << {"#{coupon_item} W/COUPON" => {:price => coupon_cost, :clearance => item_clearance, :count => (item_count - (item_count % coupon_num))/coupon_num}}
+      # coupon_item = coupon[:item]
+      # coupon_num = coupon[:num]
+      # coupon_cost = coupon[:cost]
+      if item[:count] % coupon[:num] == 0
+        new_cart << {"#{item} W/COUPON" => {:price => coupon[:cost], :clearance => item[:clearance], :count => (item[:count] / coupon[:num])}}
+      elsif item[:count] > 0 && item[:count] % coupon[:num] > 0
+        new_cart << {"#{item}" => {:price => item[:price], :clearance => item[:clearance], :count => item[:count] % coupon[:num]}}
+        new_cart << {"#{item} W/COUPON" => 
+          {
+            :price => coupon[:cost], 
+            :clearance => item[:clearance], 
+            :count => (item[:count] - (item_count % coupon_num))/coupon_num}
+          }
       end
     end
   end
