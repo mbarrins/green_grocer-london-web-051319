@@ -17,7 +17,12 @@ puts consolidate_cart(cart)
 def apply_coupons(cart, coupons)
   binding.pry
   coupons.each do |coupon|
-    item = cart.select{|item| item.keys.first == coupon[:item]}
+    item = coupon[:item]
+    num = coupon[:num]
+    cost = coupon[:cost]
+    
+    cart.select{|item| item.keys.first == coupon[:item]}
+    
   end
 end
 
